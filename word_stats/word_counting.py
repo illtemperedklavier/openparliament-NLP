@@ -26,7 +26,7 @@ import spacy
 
 nlp = spacy.load('en_core_web_sm')
 df = pd.read_csv(r"D:\data\openparliament\statements_nospeaker_en.csv")
-df = df[:30000]
+#df = df[:30000]
 df.drop('Unnamed: 0',axis=1, inplace=True)
 
 
@@ -50,7 +50,7 @@ tot = df.shape[0]
 punctuation = '!"#$%&()*+,-./:;<=>@[]^_`{|}~' + "''"
 pun_trans = str.maketrans(dict.fromkeys(punctuation, ' '))
           
-#df_chunk = pd.read_csv(r"D:\data\openparliament\statements_nospeaker_en.csv", chunksize=100000)
+#bv 
 
 for index, row in df.iterrows(): 
     soup = BeautifulSoup(row.content_en)
@@ -96,5 +96,5 @@ for index, row in df.iterrows():
     count+=1
     
 
-with open(r"D:\data\openparliament\models\vocab_dict_large.pkl", "wb") as f:
+with open(r" \vocab_dict_large.pkl", "wb") as f:
     pickle.dump(vocab_count_dict, f)
