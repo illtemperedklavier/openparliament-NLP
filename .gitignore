@@ -130,3 +130,5 @@ dmypy.json
 
 # Other
 /blog-posts/images
+.PNG
+*.PNG
