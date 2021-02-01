@@ -11,4 +11,18 @@ Combating the climate crisis is the definitive existential challenge of this tim
 For this, I used proceedings from sessions between Jan 1 2000, and August 2020. Since the Canadian parliament has statements in both official languages, I isolated the English statements. Statements made by the Speaker in the capacity as the Speaker tend to be very standardized and are just part of the procedure, so I removed them.
 
 
+ 
+# Vocabulary Counting
+
+Counting the size of vocabularies for members of parliament from Jan 1 2000 to Sep 20th 2020. For this, I wanted to avoid overcounting vocabularies by including proper names, so I used the "en-core-web-sm" pretrained module from SpaCy to identify the parts of speech, and excluded punctuation, stopwords, and proper nouns. 
+
+ 
+##Hypothesis Testing - do liberals or conservatives have larger vocabularies?
+
+
+# Topic Modeling
+
+Gensim LDA/LSI
+
+BERTopic
 
