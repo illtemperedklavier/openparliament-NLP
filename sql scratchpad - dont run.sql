@@ -74,7 +74,7 @@ ON hansards_with_bill.bill_id = bills_votequestion.bill_id
 WHERE hansards_with_bill.time < bills_votequestion.date
 ;
 
-/* get a vector of party votes, eventually */
+/* statements to votequestion_id */
 
 
 COPY (SELECT hansards_with_bill.document_id, hansards_with_bill.statement_id, hansards_with_bill.time, hansards_with_bill.h1_en, 
@@ -86,6 +86,20 @@ bills_votequestion.bill_id
 
 FROM hansards_with_bill
 INNER JOIN bills_votequestion
+ON hansards_with_bill.bill_id = bills_votequestion.bill_id
+WHERE hansards_with_bill.time < bills_votequestion.date 
+AND hansards_with_bill.time > '2000-01-01 15:00:00-05') 
+TO 'D:\data\openparliament\hansards2votequestion.csv' DELIMITER ',' CSV HEADER
+;
+
+
+SELECT hansards_with_bill.document_id, hansards_with_bill.statement_id, hansards_with_bill.time, hansards_with_bill.h1_en, 
+hansards_with_bill.h2_en, hansards_with_bill.member_id, hansards_with_bill.content_en, hansards_with_bill.sequence_en,
+hansards_with_bill.politician_id, hansards_with_bill.bill_id,
+bills_partyvote.disagreement
+FROM hansards_with_bill
+INNER JOIN bills_partyvote
+
 ON hansards_with_bill.bill_id = bills_votequestion.bill_id
 WHERE hansards_with_bill.time < bills_votequestion.date 
 AND hansards_with_bill.time > '2000-01-01 15:00:00-05') 
